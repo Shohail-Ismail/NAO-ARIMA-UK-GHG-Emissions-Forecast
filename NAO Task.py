@@ -148,7 +148,10 @@ def check_stationarity(ghg_ts):
 # Applies first-order differencing to make data stationary
 def difference_series(ghg_ts):
     differenced = ghg_ts.diff().dropna()
-    
+
+# Appears as white noise indicating no significant structure remains in data
+# Not useful beyond informing order of differencing so commented out
+"""
     # Plot the differenced series
     plt.figure(figsize = (8, 5))
     plt.plot(differenced, marker = 'x')
@@ -157,6 +160,7 @@ def difference_series(ghg_ts):
     plt.ylabel('Differenced GHG emissions (kt CO2 eq)')
     plt.grid(True)
     plt.show()
+"""
     
     return differenced
 
@@ -167,32 +171,32 @@ def main():
     # Exploratory Data Analysis
     eda(df_cleaned)
     
-    # Check stationarity of the original series
+    # Check stationarity of original series
     print("Checking stationarity of the original series:")
     check_stationarity(ghg_ts)
     
-    # Apply differencing to make the series stationary (for demonstration)
+    # Apply differencing to make the series stationary (printed explicitly for demonstration)
     print("\nApplying first-order differencing...")
     differenced_ts = difference_series(ghg_ts)
     
-    # Re-check stationarity of the differenced series
+    # Confirm stationarity of series
     print("Checking stationarity of the differenced series:")
     check_stationarity(differenced_ts)
     
     # Auto-select ARIMA order on differenced data
     order = auto_arima_order(differenced_ts)
     
-    # Fit ARIMA model using that order on original ghg_ts
+    # Fit ARIMA model using that order on original series
     arima_model = fit_arima_model(ghg_ts, order)
     print("\nARIMA Model Summary")
     print(arima_model.summary())
         
-    # Forecast next 5 years
+    # Forecasts next 5 years
     forecast_df = predict_GHG(arima_model, 5)
     print(f"\n5-year forecast")
     print(forecast_df)
     
-    # Plots and saves forecast
+    # Plots forecast
     plot_forecast(ghg_ts, forecast_df)
 
 if __name__ == "__main__":
