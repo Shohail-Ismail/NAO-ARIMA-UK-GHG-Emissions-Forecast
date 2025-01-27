@@ -16,7 +16,7 @@ The statistical analysis involved transforming non-stationary data `(ADF p-value
 
 -  **Stationarity testing**: Augmented Dickey-Fuller (ADF) Test was used to conduct stationarity testing, showing non-stationarity eithin the data with an ADF statistic of `0.79 (p-value = 0.99)`. To rectify this, applied differencing to stabilise the mean and remove non-stationarity, achieving an ADF statistic of `-7.65 (p-value = 0)`, thereby confirming stationarity. Although automated differencing exists in in `auto_arima`, opted for manual differencing due to more reliable confidence intervals.
 
--  **ARIMA modelling**: Ended with an optimal order of `ARIMA(1,0,0)` with an intercept term; the `AR(1)` coefficient `(0.9998)` indicates strong persistence, reflecting significant autocorrelation in the time series. Additionally, the Ljung-Box Q Test and Jarque-Bera test confirmed that the model residuals lacked autocorrelation and were approximately normally distributed.
+-  **ARIMA modelling**: Ended with an optimal order of `ARIMA(1,0,0)` with an intercept term; the `AR(1)` coefficient `(0.9998)` indicates strong persistence, reflecting significant autocorrelation in the time series (as expected). Additionally, conducting the Ljung-Box Q Test and Jarque-Bera test confirmed that the model residuals lacked autocorrelation and were approximately normally distributed.
 
 -  **5-year forecast**: Generated predictions for 2024 – 2028 using the fitted ARIMA model and plotted alongside historical data, incorporating 95% confidence intervals for uncertainty estimation.
 
