@@ -67,7 +67,8 @@ def auto_arima_order(ghg_ts):
 
 # Fits model to pre-selected order
 def fit_arima_model(ghg_ts, order):
-    # Linear trend chosen as seen visually during  EDA
+    # Linear trend chosen as similar trend seen visually during  EDA
+    # Even if trend in EDA was quadratic, differencing will make it linear
     model = ARIMA(ghg_ts, order = order, trend = 't')
     results = model.fit()
     return results
