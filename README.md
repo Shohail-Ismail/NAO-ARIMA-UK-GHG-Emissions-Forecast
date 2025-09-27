@@ -1,7 +1,7 @@
 # UK GHG Emissions Forecast with ARIMA for National Audit Office (NAO)
 
    * [Overview](#overview)
-   * [Environment setup](#environment-setup)
+   * [Running the program](#running-the-program)
    * [Core features](#core-features)
    * [Limitations and future developments](#limitations-and-future-developments)
 
@@ -12,24 +12,16 @@ The statistical analysis involved transforming non-stationary data `(ADF p-value
 
 ---
 
-## Environment setup
+## Running the program
 
-- **Required Python version**: Python 3.10.9
-- **Libraries**:
-  - `numpy`
-  - `pandas`
-  - `matplotlib`
-  - `statsmodels`
-  - `pmdarima`
-  - `openpyxl`
+- Required:
+    - Python 3.10.9
+    - numpy, pandas, matplotlib, statsmodels, pmdarima, openpyxl
 
--  **Structure**: Ensure the dataset `provisionalatmoshpericemissionsghg.xlsx` is in the root directory of your project.
- 
-- **Running the program**:
-
+- Run:
 ```bash
-# To run the analysis
-python NAO_Task.py
+pip install -r requirements.txt
+python NAO-Task.py
 ```
 
 ---

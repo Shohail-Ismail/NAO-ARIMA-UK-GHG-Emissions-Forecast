@@ -148,10 +148,11 @@ def check_stationarity(ghg_ts):
 # Applies first-order differencing to make data stationary
 def difference_series(ghg_ts):
     differenced = ghg_ts.diff().dropna()
+    return differenced
 
-# Appears as white noise indicating no significant structure remains in data
-# Not useful beyond informing order of differencing so commented out
-"""
+    # Appears as white noise indicating no significant structure remains in data
+    # Not useful beyond tests but left here for reference
+    """
     # Plot the differenced series
     plt.figure(figsize = (8, 5))
     plt.plot(differenced, marker = 'x')
@@ -160,9 +161,7 @@ def difference_series(ghg_ts):
     plt.ylabel('Differenced GHG emissions (kt CO2 eq)')
     plt.grid(True)
     plt.show()
-"""
-    
-    return differenced
+    """
 
 def main():    
     # Prepare data as a time series
